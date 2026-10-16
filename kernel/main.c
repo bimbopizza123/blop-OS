@@ -3,7 +3,7 @@
 #include<stdbool.h>
 #include"limine.h"
 
-__attribute__((used, section(".limine:requests")))
+__attribute__((used, section(".limine_requests")))
 static volatile uint64_t limine_base_revision[] = LIMINE_BASE_REVISION(6);
 
 __attribute__((used, section(".limine_requests")))
@@ -29,7 +29,7 @@ void *memcpy(void *restrict dest, const void *restrict src, size_t n) {
     return dest;
 }
 
-void *memtest(void *s, int c, size_t n) {
+void *memset(void *s, int c, size_t n) {
     uint8_t *p = s;
 
     for (size_t i = 0; i < n; i++) {
@@ -56,7 +56,7 @@ void *memmove(void *dest, const void *src, size_t n) {
     return dest;
 }
 
-int memcpm(const void *s1, const void *s2, size_t n) {
+int memcmp(const void *s1, const void *s2, size_t n) {
     const uint8_t *p1 = s1;
     const uint8_t *p2 = s2;
 
